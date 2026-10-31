@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scenes/beam_warning_line.gd" id="1_script"]
+[ext_resource type="Material" path="res://materials/beam_warning_line.tres" id="2_mat"]
+
+[sub_resource type="PlaneMesh" id="1_plane"]
+size = Vector2(1, 6)
+
+[node name="BeamWarningLine" type="Node3D"]
+script = ExtResource("1_script")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("1_plane")
+material_override = ExtResource("2_mat")
+cast_shadow = 0

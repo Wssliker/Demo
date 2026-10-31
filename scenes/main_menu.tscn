@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://cpq4sioq00lw8"]
+
+[ext_resource type="Script" uid="uid://cvyuxoqxc3a5w" path="res://main_menu.gd" id="1_l6cm7"]
+[ext_resource type="Texture2D" uid="uid://cosouofrf6sim" path="res://assets/generated/67a46c6e-c546-4512-8ddc-b7c4efb85517.png" id="2_bqqt6"]
+[ext_resource type="Shader" uid="uid://bktusxqp43bvd" path="res://shaders/painterly_gouache.gdshader" id="2_fx001"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fx001"]
+shader = ExtResource("2_fx001")
+shader_parameter/posterize_levels = 9.0
+shader_parameter/outline_strength = 0.45
+shader_parameter/grain_strength = 0.06
+shader_parameter/vignette_strength = 0.45
+shader_parameter/paper_tint = Color(0.96, 0.93, 0.86, 1)
+shader_parameter/shadow_tint = Color(0.42, 0.28, 0.55, 1)
+
+[node name="MainMenu" type="Control" unique_id=1518397027]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l6cm7")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1192172039]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_bqqt6")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=410213254]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 75
+theme_override_constants/margin_bottom = 90
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1481595305]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 10
+
+[node name="GameTitle" type="Label" parent="MarginContainer/VBoxContainer" unique_id=2017365264]
+layout_mode = 2
+theme_override_font_sizes/font_size = 54
+text = "Demo 1.0"
+
+[node name="Subtitle" type="Label" parent="MarginContainer/VBoxContainer" unique_id=928494588]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Primera prueba"
+
+[node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer" unique_id=2040591557]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=4428342]
+custom_minimum_size = Vector2(300, 44)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "CONTINUAR"
+
+[node name="NewGameButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=121586664]
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "NUEVA PARTIDA"
+
+[node name="OptionsButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1098050864]
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "AJUSTES"
+
+[node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=615773778]
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "SALIR"
+
+[node name="PainterlyFX" type="CanvasLayer" parent="." unique_id=546223706]
+
+[node name="Overlay" type="ColorRect" parent="PainterlyFX" unique_id=758376003]
+visible = false
+material = SubResource("ShaderMaterial_fx001")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 1, 0, 1)

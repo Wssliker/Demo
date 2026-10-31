@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3]
+
+[ext_resource type="Shader" path="res://shaders/beam_cosmic.gdshader" id="1_shader"]
+
+[resource]
+shader = ExtResource("1_shader")
+shader_parameter/cold_tint = Color(0.16, 0.03, 0.14, 1)
+shader_parameter/hot_tint = Color(0.62, 0.10, 0.20, 1)
+shader_parameter/firing = 0.0
+shader_parameter/opacity = 0.46
+shader_parameter/turbulence = 1.1

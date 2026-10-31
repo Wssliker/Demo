@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://5ffmh13nshkj"]
+
+[ext_resource type="Script" uid="uid://da0k1ctal1be2" path="res://inkeyeprojectile.gd" id="1_ywo2i"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xa11k"]
+radius = 0.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_olpmc"]
+albedo_color = Color(1, 0.616379, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_vvsrl"]
+material = SubResource("StandardMaterial3D_olpmc")
+radius = 0.25
+
+[node name="InkEyeProjectile" type="Area3D" unique_id=100055951]
+script = ExtResource("1_ywo2i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1058345124]
+shape = SubResource("SphereShape3D_xa11k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=698692925]
+mesh = SubResource("SphereMesh_vvsrl")

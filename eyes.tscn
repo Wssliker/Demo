@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://2lxuwfuib4fa"]
+
+[ext_resource type="Script" uid="uid://bhfdk3mmilss2" path="res://eyesAttack.gd" id="1_108dl"]
+[ext_resource type="PackedScene" uid="uid://5ffmh13nshkj" path="res://scenes/ink_eye_projectile.tscn" id="2_6ktnp"]
+
+[node name="Eyes" type="Node3D" unique_id=832145309]
+script = ExtResource("1_108dl")
+projectile_scene = ExtResource("2_6ktnp")

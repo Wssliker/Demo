@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AttackData" format=3 uid="uid://dtts8sytordtn"]
+
+[ext_resource type="Script" uid="uid://dgyxpgbrq83s7" path="res://AttackData.gd" id="1_kr4lu"]
+
+[resource]
+script = ExtResource("1_kr4lu")
+id = "Rain"
+damage = 15
+recover_time = 1.2
+telegraph_color = Color(1, 0, 0.43137255, 1)
+metadata/_custom_type_script = "uid://dgyxpgbrq83s7"

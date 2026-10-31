@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AttackData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://AttackData.gd" id="1_ad"]
+
+[resource]
+script = ExtResource("1_ad")
+id = "Sweep"
+damage = 24
+charge_time = 0.5
+recover_time = 0.8
+telegraph_color = Color(1, 0.55, 0.2, 1)

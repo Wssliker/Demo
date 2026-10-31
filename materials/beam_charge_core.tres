@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3]
+
+[ext_resource type="Shader" path="res://shaders/beam_charge_core.gdshader" id="1_shader"]
+
+[resource]
+shader = ExtResource("1_shader")
+shader_parameter/base_color = Color(0.34, 0.05, 0.12, 1)
+shader_parameter/hot_color = Color(0.75, 0.24, 0.34, 1)
+shader_parameter/energy = 1.0
+shader_parameter/locked = 0.0

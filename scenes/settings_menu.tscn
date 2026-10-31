@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://settings_menu.gd" id="1_set"]
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_set")
+
+[node name="Bg" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.02, 0.05, 0.96)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+offset_left = 90.0
+offset_top = 64.0
+offset_right = 700.0
+offset_bottom = 130.0
+theme_override_font_sizes/font_size = 48
+text = "AJUSTES"
+
+[node name="Rows" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 90.0
+offset_top = 168.0
+offset_right = 820.0
+offset_bottom = 520.0
+theme_override_constants/separation = 16
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+offset_left = 90.0
+offset_top = 560.0
+offset_right = 330.0
+offset_bottom = 604.0
+text = "VOLVER"

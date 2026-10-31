@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AttackData" format=3 uid="uid://xbd2uljqc0gi"]
+
+[ext_resource type="Script" uid="uid://dgyxpgbrq83s7" path="res://AttackData.gd" id="1_oy21k"]
+
+[resource]
+script = ExtResource("1_oy21k")
+id = "Beam"
+charge_time = 1.5
+metadata/_custom_type_script = "uid://dgyxpgbrq83s7"

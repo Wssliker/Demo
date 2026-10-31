@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AttackData" format=3 uid="uid://bduwe54ns1amg"]
+
+[ext_resource type="Script" uid="uid://dgyxpgbrq83s7" path="res://AttackData.gd" id="1_kdylo"]
+
+[resource]
+script = ExtResource("1_kdylo")
+id = "Eyes"
+charge_time = 0.8
+telegraph_color = Color(0.6156863, 0.30588236, 0.8666667, 1)
+metadata/_custom_type_script = "uid://dgyxpgbrq83s7"

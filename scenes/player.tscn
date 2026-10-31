@@ -1,0 +1,250 @@
+[gd_scene format=3 uid="uid://btwsou35qemnl"]
+
+[ext_resource type="Script" uid="uid://b83sejvxs13u" path="res://player.gd" id="1_3vyb7"]
+[ext_resource type="PackedScene" uid="uid://cyjuvrhlfsgu4" path="res://scenes/hud.tscn" id="2_g2els"]
+[ext_resource type="PackedScene" uid="uid://chmewxr65by2m" path="res://scenes/ink_impact_effect.tscn" id="2_qhqgy"]
+[ext_resource type="Script" uid="uid://co75f28e8o8xm" path="res://scenes/player_visual_v4.gd" id="3_v4"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hidden"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 0)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_hidden"]
+material = SubResource("StandardMaterial3D_hidden")
+
+[sub_resource type="BoxMesh" id="BoxMesh_hidden"]
+material = SubResource("StandardMaterial3D_hidden")
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_attack"]
+size = Vector3(1.5, 1, 1.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cloth"]
+albedo_color = Color(0.18, 0.2, 0.24, 1)
+roughness = 0.98
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_skirt"]
+material = SubResource("StandardMaterial3D_cloth")
+top_radius = 0.28
+bottom_radius = 0.4
+height = 0.84
+radial_segments = 12
+rings = 5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_torso"]
+material = SubResource("StandardMaterial3D_cloth")
+top_radius = 0.22
+bottom_radius = 0.18
+height = 0.6
+radial_segments = 12
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cloth_dark"]
+albedo_color = Color(0.1, 0.11, 0.14, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_head"]
+material = SubResource("StandardMaterial3D_cloth_dark")
+radius = 0.22
+height = 0.44
+radial_segments = 12
+rings = 8
+
+[sub_resource type="SphereMesh" id="SphereMesh_hood"]
+material = SubResource("StandardMaterial3D_cloth_dark")
+radius = 0.34
+height = 0.54
+radial_segments = 12
+rings = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mask"]
+albedo_color = Color(0.66, 0.68, 0.72, 1)
+metallic = 0.02
+roughness = 0.9
+
+[sub_resource type="SphereMesh" id="SphereMesh_mask"]
+material = SubResource("StandardMaterial3D_mask")
+radius = 0.19
+height = 0.28
+radial_segments = 12
+rings = 6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_accent"]
+albedo_color = Color(0.45, 0.15, 0.16, 1)
+roughness = 0.96
+emission_enabled = true
+emission = Color(0.14, 0.02, 0.02, 1)
+emission_energy_multiplier = 0.15
+
+[sub_resource type="BoxMesh" id="BoxMesh_mask_mark"]
+material = SubResource("StandardMaterial3D_accent")
+size = Vector3(0.03, 0.15, 0.02)
+
+[sub_resource type="SphereMesh" id="SphereMesh_shoulder"]
+material = SubResource("StandardMaterial3D_cloth_dark")
+radius = 0.16
+height = 0.28
+radial_segments = 10
+rings = 6
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_arm"]
+material = SubResource("StandardMaterial3D_cloth_dark")
+top_radius = 0.08
+bottom_radius = 0.07
+height = 0.54
+radial_segments = 8
+rings = 3
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_leg"]
+material = SubResource("StandardMaterial3D_cloth_dark")
+top_radius = 0.11
+bottom_radius = 0.08
+height = 0.34
+radial_segments = 8
+rings = 3
+
+[sub_resource type="PrismMesh" id="PrismMesh_cloak_back"]
+material = SubResource("StandardMaterial3D_cloth_dark")
+left_to_right = 0.18
+size = Vector3(0.66, 1.1, 0.08)
+
+[sub_resource type="PrismMesh" id="PrismMesh_cloak_side"]
+material = SubResource("StandardMaterial3D_cloth_dark")
+left_to_right = 0.12
+size = Vector3(0.26, 0.94, 0.05)
+
+[sub_resource type="PrismMesh" id="PrismMesh_blade"]
+material = SubResource("StandardMaterial3D_mask")
+left_to_right = 0.0
+size = Vector3(0.06, 0.82, 0.025)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hilt"]
+material = SubResource("StandardMaterial3D_accent")
+top_radius = 0.025
+bottom_radius = 0.025
+height = 0.2
+radial_segments = 8
+
+[node name="Player" type="CharacterBody3D" unique_id=168701293 groups=["player"]]
+process_mode = 1
+script = ExtResource("1_3vyb7")
+max_player_health = 150
+player_health = 150
+max_jumps = 3
+light_attack_one_damage = 3
+light_attack_two_damage = 7
+heavy_attack_damage = 10
+ink_effect_scene = ExtResource("2_qhqgy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=74103139]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_onrkg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=90347554]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_hidden")
+
+[node name="Visor" type="MeshInstance3D" parent="MeshInstance3D" unique_id=948493886]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.4)
+visible = false
+mesh = SubResource("BoxMesh_hidden")
+
+[node name="AttackArea" type="Area3D" parent="MeshInstance3D" unique_id=1442724199]
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/AttackArea" unique_id=1182736767]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1.2)
+shape = SubResource("BoxShape3D_attack")
+
+[node name="TravelerVisual" type="Node3D" parent="MeshInstance3D" unique_id=1050442259]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.92, 0)
+script = ExtResource("3_v4")
+
+[node name="BodyRoot" type="Node3D" parent="MeshInstance3D/TravelerVisual" unique_id=1252255914]
+
+[node name="Skirt" type="MeshInstance3D" parent="MeshInstance3D/TravelerVisual/BodyRoot" unique_id=2145071084]
+transform = Transform3D(0.98, 0, 0, 0, 1, 0, 0, 0, 0.98, 0, 0.42, 0)
+mesh = SubResource("CylinderMesh_skirt")
+
+[node name="Torso" type="MeshInstance3D" parent="MeshInstance3D/TravelerVisual/BodyRoot" unique_id=1035097850]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.82, 0)
+mesh = SubResource("CylinderMesh_torso")
+
+[node name="Head" type="MeshInstance3D" parent="MeshInstance3D/TravelerVisual/BodyRoot" unique_id=897353447]
+transform = Transform3D(0.88, 0, 0, 0, 1, 0, 0, 0, 0.88, 0, 1.18, -0.02)
+mesh = SubResource("SphereMesh_head")
+
+[node name="Hood" type="MeshInstance3D" parent="MeshInstance3D/TravelerVisual/BodyRoot" unique_id=1984737197]
+transform = Transform3D(1, 0, 0, 0, 1.08, 0, 0, 0, 0.9, 0, 1.14, 0.02)
+mesh = SubResource("SphereMesh_hood")
+
+[node name="Mask" type="MeshInstance3D" parent="MeshInstance3D/TravelerVisual/BodyRoot" unique_id=679832015]
+transform = Transform3D(0.92, 0, 0, 0, 0.7, 0, 0, 0, 0.26, 0, 1.12, -0.22)
+mesh = SubResource("SphereMesh_mask")
+
+[node name="MaskMark" type="MeshInstance3D" parent="MeshInstance3D/TravelerVisual/BodyRoot/Mask" unique_id=1081408121]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01, -0.06)
+mesh = SubResource("BoxMesh_mask_mark")
+
+[node name="ShoulderLeft" type="MeshInstance3D" parent="MeshInstance3D/TravelerVisual/BodyRoot" unique_id=43139769]
+transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 0.9, -0.24, 0.96, 0)
+mesh = SubResource("SphereMesh_shoulder")
+
+[node name="ShoulderRight" type="MeshInstance3D" parent="MeshInstance3D/TravelerVisual/BodyRoot" unique_id=1138956644]
+transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 0.9, 0.24, 0.96, 0)
+mesh = SubResource("SphereMesh_shoulder")
+
+[node name="ArmLeft" type="MeshInstance3D" parent="MeshInstance3D/TravelerVisual/BodyRoot" unique_id=1200493648]
+transform = Transform3D(0.9, 0.12, -0.1, -0.14, 0.98, -0.12, 0.08, 0.12, 0.98, -0.34, 0.78, 0.02)
+mesh = SubResource("CylinderMesh_arm")
+
+[node name="ArmRight" type="MeshInstance3D" parent="MeshInstance3D/TravelerVisual/BodyRoot" unique_id=1691763291]
+transform = Transform3D(0.9, -0.12, 0.1, 0.14, 0.98, -0.12, -0.08, 0.12, 0.98, 0.34, 0.78, 0.02)
+mesh = SubResource("CylinderMesh_arm")
+
+[node name="LegLeft" type="MeshInstance3D" parent="MeshInstance3D/TravelerVisual/BodyRoot" unique_id=134398839]
+transform = Transform3D(0.84, 0, 0, 0, 1, 0, 0, 0, 0.84, -0.11, -0.02, 0)
+mesh = SubResource("CylinderMesh_leg")
+
+[node name="LegRight" type="MeshInstance3D" parent="MeshInstance3D/TravelerVisual/BodyRoot" unique_id=1108446440]
+transform = Transform3D(0.84, 0, 0, 0, 1, 0, 0, 0, 0.84, 0.11, -0.02, 0)
+mesh = SubResource("CylinderMesh_leg")
+
+[node name="CloakRoot" type="Node3D" parent="MeshInstance3D/TravelerVisual/BodyRoot" unique_id=316669147]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.88, 0.14)
+
+[node name="CloakBack" type="MeshInstance3D" parent="MeshInstance3D/TravelerVisual/BodyRoot/CloakRoot" unique_id=1857514302]
+transform = Transform3D(0.98, 0, 0, 0, 1.04, 0, 0, 0, 1, 0, -0.1, 0.03)
+mesh = SubResource("PrismMesh_cloak_back")
+
+[node name="CloakLeft" type="MeshInstance3D" parent="MeshInstance3D/TravelerVisual/BodyRoot/CloakRoot" unique_id=1416911103]
+transform = Transform3D(0.98, 0, -0.2, 0, 1, 0, 0.18, 0, 0.92, -0.23, -0.02, 0)
+mesh = SubResource("PrismMesh_cloak_side")
+
+[node name="CloakRight" type="MeshInstance3D" parent="MeshInstance3D/TravelerVisual/BodyRoot/CloakRoot" unique_id=1548159601]
+transform = Transform3D(0.98, 0, 0.2, 0, 1, 0, -0.18, 0, 0.92, 0.23, -0.02, 0)
+mesh = SubResource("PrismMesh_cloak_side")
+
+[node name="WeaponRoot" type="Node3D" parent="MeshInstance3D/TravelerVisual/BodyRoot" unique_id=2081533444]
+transform = Transform3D(0.96, 0.04, 0.27, -0.05, 0.99, 0.12, -0.27, -0.13, 0.95, 0.28, 0.82, 0.1)
+
+[node name="Blade" type="MeshInstance3D" parent="MeshInstance3D/TravelerVisual/BodyRoot/WeaponRoot" unique_id=227745600]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34, 0)
+mesh = SubResource("PrismMesh_blade")
+
+[node name="Hilt" type="MeshInstance3D" parent="MeshInstance3D/TravelerVisual/BodyRoot/WeaponRoot" unique_id=413207355]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.1, 0)
+mesh = SubResource("CylinderMesh_hilt")
+
+[node name="CameraPivot" type="Node3D" parent="." unique_id=1682879526]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot" unique_id=299821759]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 0, 0)
+spring_length = 4.0
+margin = 0.2
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D" unique_id=1543177471]
+current = true
+
+[node name="HUD" parent="." unique_id=1554456701 instance=ExtResource("2_g2els")]

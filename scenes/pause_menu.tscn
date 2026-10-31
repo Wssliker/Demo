@@ -1,0 +1,78 @@
+[gd_scene load_steps=3 format=3 uid="uid://cafih11vj1eev"]
+
+[ext_resource type="Script" uid="uid://cu30ggfoatyc" path="res://pausemenu.gd" id="1_n87rw"]
+[ext_resource type="Texture2D" path="res://assets/generated/ui_pause_bg.png" id="2_bg"]
+
+[node name="PauseMenu" type="Control" unique_id=169605410]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n87rw")
+
+[node name="BgImage" type="TextureRect" parent="." unique_id=796919207]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+modulate = Color(1, 1, 1, 0.5)
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 6
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=796919206]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.06, 0.02, 0.05, 0.55)
+
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect" unique_id=1043686962]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer" unique_id=1455877639]
+layout_mode = 2
+
+[node name="TittleLabel" type="Label" parent="ColorRect/CenterContainer/VBoxContainer" unique_id=1717692010]
+layout_mode = 2
+theme_override_font_sizes/font_size = 46
+text = "EN PAUSA"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="ColorRect/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer" unique_id=1382495912]
+layout_mode = 2
+custom_minimum_size = Vector2(280, 44)
+text = "CONTINUAR"
+
+[node name="AjustesButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(280, 40)
+text = "AJUSTES"
+
+[node name="RestartButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer" unique_id=1309416368]
+layout_mode = 2
+custom_minimum_size = Vector2(280, 40)
+text = "REINICIAR COMBATE"
+
+[node name="QuitToMenuButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer" unique_id=1901815522]
+layout_mode = 2
+custom_minimum_size = Vector2(280, 40)
+text = "VOLVER AL MENÚ"

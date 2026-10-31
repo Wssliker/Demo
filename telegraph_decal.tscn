@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://btelegr4ph001"]
+
+[ext_resource type="Script" path="res://telegraph_decal.gd" id="1_telgr"]
+[ext_resource type="Shader" path="res://shaders/telegraph_decal.gdshader" id="2_telsh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_telgr"]
+shader = ExtResource("2_telsh")
+
+[sub_resource type="QuadMesh" id="QuadMesh_telgr"]
+size = Vector2(2, 2)
+
+[node name="TelegraphDecal" type="Node3D"]
+script = ExtResource("1_telgr")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0.02, 0)
+mesh = SubResource("QuadMesh_telgr")
+material_override = SubResource("ShaderMaterial_telgr")

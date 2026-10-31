@@ -1,0 +1,216 @@
+[gd_scene format=3 uid="uid://c4fy1rxiwqjo4"]
+
+[ext_resource type="Script" uid="uid://dgov17x01ibs2" path="res://dummy_enemy.gd" id="1_u8a1r"]
+[ext_resource type="Resource" uid="uid://cj2txcueg00s" path="res://Melee.tres" id="3_4xlgn"]
+[ext_resource type="Script" uid="uid://c6iwv8j73mr2o" path="res://scenes/orbit_eyes.gd" id="3_62bfn"]
+[ext_resource type="Resource" uid="uid://bduwe54ns1amg" path="res://Eyes.tres" id="4_31mrx"]
+[ext_resource type="Script" uid="uid://cp74128kborn" path="res://climbale_zone.gd" id="4_62bfn"]
+[ext_resource type="Script" uid="uid://dgcftft5s6rku" path="res://weak_point.gd" id="5_chekb"]
+[ext_resource type="Resource" uid="uid://dtts8sytordtn" path="res://Rain.tres" id="5_ehadq"]
+[ext_resource type="Script" uid="uid://dgyxpgbrq83s7" path="res://AttackData.gd" id="5_xdio2"]
+[ext_resource type="Resource" uid="uid://xbd2uljqc0gi" path="res://Beam.tres" id="6_t532d"]
+[ext_resource type="PackedScene" uid="uid://r7r8dxlfnyco" path="res://melee.tscn" id="7_x1iye"]
+[ext_resource type="PackedScene" uid="uid://co1v8p7blistu" path="res://rain.tscn" id="8_rnt18"]
+[ext_resource type="PackedScene" uid="uid://2lxuwfuib4fa" path="res://eyes.tscn" id="9_2krim"]
+[ext_resource type="PackedScene" uid="uid://kvf7gyhfs3ql" path="res://beam.tscn" id="9_ks0gq"]
+[ext_resource type="PackedScene" path="res://sweep.tscn" id="10_sweep"]
+[ext_resource type="PackedScene" path="res://stomp.tscn" id="11_stomp"]
+[ext_resource type="PackedScene" path="res://charge.tscn" id="12_charge"]
+[ext_resource type="Resource" path="res://Sweep.tres" id="13_sweepd"]
+[ext_resource type="Resource" path="res://Charge.tres" id="15_charged"]
+[ext_resource type="PackedScene" path="res://dark_mark.tscn" id="16_darkmark"]
+[ext_resource type="Resource" path="res://DarkMark.tres" id="17_darkmarkd"]
+[ext_resource type="Texture2D" uid="uid://cwnmsrnsg6h30" path="res://assets/generated/boss_stone_cosmic.png" id="18_bosstex"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xa11k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_stone"]
+albedo_color = Color(0.6, 0.55, 0.68, 1)
+albedo_texture = ExtResource("18_bosstex")
+roughness = 0.92
+emission_enabled = true
+emission = Color(0.3, 0.12, 0.42, 1)
+emission_energy_multiplier = 0.5
+uv1_scale = Vector3(0.14, 0.14, 0.14)
+uv1_triplanar = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_stone"]
+material = SubResource("StandardMaterial3D_stone")
+
+[sub_resource type="SphereMesh" id="SphereMesh_stone"]
+material = SubResource("StandardMaterial3D_stone")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_capb2"]
+radius = 2.95
+height = 12.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xdio2"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_2krim"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_chekb"]
+albedo_color = Color(1, 1, 0.85430586, 1)
+roughness = 0.2
+emission_enabled = true
+emission = Color(1, 0.95468724, 0.58383155, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_xa11k"]
+material = SubResource("StandardMaterial3D_chekb")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_xa11k"]
+viewport_path = NodePath("HealthBarViewport")
+
+[node name="DummyEnemy" type="CharacterBody3D" unique_id=247717540 groups=["boss"]]
+script = ExtResource("1_u8a1r")
+attacks_p1 = Array[ExtResource("5_xdio2")]([ExtResource("3_4xlgn"), ExtResource("13_sweepd"), ExtResource("17_darkmarkd"), ExtResource("5_ehadq")])
+attacks_p2 = Array[ExtResource("5_xdio2")]([ExtResource("4_31mrx"), ExtResource("5_ehadq"), ExtResource("6_t532d"), ExtResource("15_charged"), ExtResource("17_darkmarkd")])
+attacks_p3 = Array[ExtResource("5_xdio2")]([ExtResource("3_4xlgn"), ExtResource("4_31mrx"), ExtResource("5_ehadq"), ExtResource("6_t532d"), ExtResource("15_charged"), ExtResource("13_sweepd"), ExtResource("17_darkmarkd")])
+third_eye_combo_opening = 2.5
+eye_break_opening = 2.25
+second_eye_break_opening = 3.5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2127060144]
+transform = Transform3D(12.2, 0, 0, 0, 12.2, 0, 0, 0, 12.2, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_xa11k")
+
+[node name="BodyPivot" type="Node3D" parent="." unique_id=421211204]
+transform = Transform3D(2.6, 0, 0, 0, 2.6, 0, 0, 0, 2.6, 0, -4.5482244, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BodyPivot" unique_id=1825204647]
+transform = Transform3D(3.6, 0, 0, 0, 3.36691, -0.52886, 0, 0.47319, 3.76302, 0, 1.2, 0)
+mesh = SubResource("CapsuleMesh_stone")
+
+[node name="Base" type="MeshInstance3D" parent="BodyPivot" unique_id=1771818173]
+transform = Transform3D(5, 0, 0, 0, 1.6, 0, 0, 0, 5, 0, -3.9, 0.3)
+mesh = SubResource("SphereMesh_stone")
+
+[node name="Head" type="MeshInstance3D" parent="BodyPivot" unique_id=1165428085]
+transform = Transform3D(2.2, 0, 0, 0, 1.86571, -1.16582, 0, 1.16582, 1.86571, 0, 4.6, -1.8)
+mesh = SubResource("SphereMesh_stone")
+
+[node name="Hump" type="MeshInstance3D" parent="BodyPivot" unique_id=1879519200]
+transform = Transform3D(3.8, 0, 0, 0, 2.77275, 0.47319, 0, -0.38968, 3.36691, 0, 3.6, 0.9)
+mesh = SubResource("SphereMesh_stone")
+
+[node name="Arm_L" type="MeshInstance3D" parent="BodyPivot" unique_id=984309279]
+transform = Transform3D(0.9521824, 1.8499135, -0.1560067, -0.64486676, 2.7315302, -0.23034993, 2.8233689e-09, 0.82253, 1.1158397, -2.8141882, 1.6, -0.2)
+mesh = SubResource("CapsuleMesh_stone")
+
+[node name="Arm_R" type="MeshInstance3D" parent="BodyPivot" unique_id=348054860]
+transform = Transform3D(0.994724, -1.6554717, 0.13960941, 0.57708645, 2.8535678, -0.24064158, -2.8233675e-09, 0.82253, 1.1158398, 3.1, 1.6, -0.2)
+mesh = SubResource("CapsuleMesh_stone")
+
+[node name="Hand_L" type="MeshInstance3D" parent="BodyPivot" unique_id=929734006]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, -4, -1.5, -0.9)
+mesh = SubResource("SphereMesh_stone")
+
+[node name="Hand_R" type="MeshInstance3D" parent="BodyPivot" unique_id=789421829]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 4, -1.5, -0.9)
+mesh = SubResource("SphereMesh_stone")
+
+[node name="Leg_L" type="MeshInstance3D" parent="BodyPivot" unique_id=590923334]
+transform = Transform3D(1.39233, 0.01604, 0.14598, -0.14634, 0.15262, 1.38894, 0, -2.19464, 0.09766, -2, -1.9, -0.9)
+mesh = SubResource("CapsuleMesh_stone")
+
+[node name="Leg_R" type="MeshInstance3D" parent="BodyPivot" unique_id=1516742767]
+transform = Transform3D(1.39233, -0.01604, -0.14598, 0.14634, 0.15262, 1.38894, 0, -2.19464, 0.09766, 2, -1.9, -0.9)
+mesh = SubResource("CapsuleMesh_stone")
+
+[node name="ClimbZone" type="Area3D" parent="BodyPivot" unique_id=164197137 groups=["climbable"]]
+monitoring = false
+script = ExtResource("4_62bfn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BodyPivot/ClimbZone" unique_id=1589281092]
+shape = SubResource("CapsuleShape3D_capb2")
+
+[node name="WeakPoint" type="AnimatableBody3D" parent="BodyPivot" unique_id=1512604566 groups=["weak_point"]]
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 3.7999997, 2.0982192)
+script = ExtResource("5_chekb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BodyPivot/WeakPoint" unique_id=362927355]
+shape = SubResource("SphereShape3D_xdio2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BodyPivot/WeakPoint" unique_id=1880995582]
+mesh = SubResource("SphereMesh_2krim")
+
+[node name="WeakPoint2" type="AnimatableBody3D" parent="BodyPivot" unique_id=324605347 groups=["weak_point"]]
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 2, 1.6477537)
+script = ExtResource("5_chekb")
+eye_index = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BodyPivot/WeakPoint2" unique_id=1922083305]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0.010308981)
+shape = SubResource("SphereShape3D_xdio2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BodyPivot/WeakPoint2" unique_id=372749770]
+mesh = SubResource("SphereMesh_2krim")
+
+[node name="WeakPoint3" type="AnimatableBody3D" parent="BodyPivot" unique_id=1420751907 groups=["weak_point"]]
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 0.2, 1.2900527)
+script = ExtResource("5_chekb")
+eye_index = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BodyPivot/WeakPoint3" unique_id=1142990205]
+shape = SubResource("SphereShape3D_xdio2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BodyPivot/WeakPoint3" unique_id=983295274]
+mesh = SubResource("SphereMesh_2krim")
+
+[node name="OrbitEyes" type="Node3D" parent="BodyPivot" unique_id=723782762]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.4, 0)
+script = ExtResource("3_62bfn")
+
+[node name="Eyes1" type="MeshInstance3D" parent="BodyPivot/OrbitEyes" unique_id=1102695981]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 1.5, 0)
+mesh = SubResource("SphereMesh_xa11k")
+
+[node name="Eyes2" type="MeshInstance3D" parent="BodyPivot/OrbitEyes" unique_id=1351354975]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 1.5, 0)
+mesh = SubResource("SphereMesh_xa11k")
+
+[node name="Eyes3" type="MeshInstance3D" parent="BodyPivot/OrbitEyes" unique_id=1271497314]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, -0.5)
+mesh = SubResource("SphereMesh_xa11k")
+
+[node name="HealthBarSprite" type="Sprite3D" parent="." unique_id=2086540495]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, 0)
+visible = false
+billboard = 1
+texture = SubResource("ViewportTexture_xa11k")
+
+[node name="HealthBarViewport" type="SubViewport" parent="." unique_id=105057113]
+transparent_bg = true
+size = Vector2i(200, 26)
+
+[node name="ProgressBar" type="ProgressBar" parent="HealthBarViewport" unique_id=1784190307]
+visible = false
+custom_minimum_size = Vector2(200, 26)
+offset_right = 4.0
+offset_bottom = 27.0
+max_value = 300.0
+value = 300.0
+show_percentage = false
+
+[node name="Attacks" type="Node3D" parent="." unique_id=1397596785]
+
+[node name="Melee" parent="Attacks" unique_id=311937200 instance=ExtResource("7_x1iye")]
+
+[node name="Rain" parent="Attacks" unique_id=160591254 instance=ExtResource("8_rnt18")]
+
+[node name="Beam" parent="Attacks" unique_id=1493843613 instance=ExtResource("9_ks0gq")]
+
+[node name="Eyes" parent="Attacks" unique_id=832145309 instance=ExtResource("9_2krim")]
+shots_per_eye = 3
+
+[node name="Sweep" parent="Attacks" unique_id=290206618 instance=ExtResource("10_sweep")]
+
+[node name="Stomp" parent="Attacks" unique_id=427784890 instance=ExtResource("11_stomp")]
+
+[node name="Charge" parent="Attacks" unique_id=100375011 instance=ExtResource("12_charge")]
+
+[node name="DarkMark" parent="Attacks" unique_id=787860280 instance=ExtResource("16_darkmark")]
+
+[editable path="Attacks/Melee"]
+[editable path="Attacks/Rain"]
+[editable path="Attacks/Beam"]
+[editable path="Attacks/Eyes"]

@@ -1,0 +1,261 @@
+[gd_scene format=3 uid="uid://d1t6b1haee4qn"]
+
+[ext_resource type="Script" uid="uid://dvboo1s5c4otc" path="res://scenes/arena.gd" id="1_7ft05"]
+[ext_resource type="PackedScene" uid="uid://btwsou35qemnl" path="res://scenes/player.tscn" id="2_wl4x5"]
+[ext_resource type="Script" uid="uid://bsn7cwp6i05s8" path="res://scenes/killzone.gd" id="3_olpmc"]
+[ext_resource type="PackedScene" uid="uid://cafih11vj1eev" path="res://scenes/pause_menu.tscn" id="4_xdvfk"]
+[ext_resource type="PackedScene" uid="uid://c4fy1rxiwqjo4" path="res://scenes/Boss1.tscn" id="5_7ft05"]
+[ext_resource type="Shader" uid="uid://bktusxqp43bvd" path="res://shaders/painterly_gouache.gdshader" id="6_fx001"]
+[ext_resource type="Script" uid="uid://coqcnxie1jjb6" path="res://scenes/arena_palette.gd" id="7_pal"]
+[ext_resource type="Script" uid="uid://b4c0ffslikrgp" path="res://scenes/arena_v4_decor.gd" id="8_arv4"]
+[ext_resource type="Texture2D" uid="uid://b5umipldiv1i3" path="res://assets/generated/arena_sostiene_rock.png" id="9_rock"]
+[ext_resource type="Texture2D" uid="uid://bhmairwsanal3" path="res://assets/generated/arena_v5_stone.png" id="10_artstone"]
+[ext_resource type="Script" uid="uid://dhwwkyn2o0bm3" path="res://scenes/arena_ruinas_art.gd" id="11_ruinas"]
+[ext_resource type="Script" uid="uid://co5bycpgf1yhx" path="res://scenes/arena_atmosphere.gd" id="12_atmo"]
+
+[sub_resource type="Environment" id="Environment_xa11k"]
+background_mode = 1
+background_color = Color(0.09, 0.05, 0.16, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.55, 0.42, 0.66, 1)
+ambient_light_energy = 0.45
+tonemap_mode = 3
+tonemap_white = 2.0
+glow_enabled = true
+glow_intensity = 0.42
+glow_bloom = 0.06
+glow_blend_mode = 2
+glow_hdr_threshold = 0.9
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.32, 0.2, 0.4, 1)
+fog_light_energy = 0.7
+fog_density = 0.065
+fog_sky_affect = 0.2
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.004
+volumetric_fog_albedo = Color(0.6, 0.5, 0.72, 1)
+volumetric_fog_emission = Color(0.22, 0.06, 0.32, 1)
+volumetric_fog_emission_energy = 0.18
+adjustment_enabled = true
+adjustment_contrast = 1.13
+adjustment_saturation = 0.92
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_wl4x5"]
+vertices = PackedVector3Array(-17.75, 10.5, 4, -16.75, 10.5, 7.25, -14.5, 10.5, 11, -10, 10.5, 15.25, 4, 10.5, 17.75, 7.25, 10.5, 16.75, 11, 10.5, 14.5, 15.25, 10.5, 10, 17.75, 10.5, -4, 16.75, 10.5, -7.25, 14.5, 10.5, -11, -4, 10.5, -17.75, -7.25, 10.5, -16.75, -11, 10.5, -14.5, -7.25, 10.5, 16.75, -2.5, 10.5, 18, 16.75, 10.5, 7.25, 18, 10.5, 2.5, 10, 10.5, -15.25, 7.25, 10.5, -16.75, 2.5, 10.5, -18, -15.25, 10.5, -10, -16.75, 10.5, -7.25, -18, 10.5, -2.5, -10.25, 1, 14.25, -7, 1, 16.25, -4, 1, 17.25, 2.5, 1, 17.5, -1.75, 1, 6, -7.25, 1, 6.25, -9, 1, -15.25, -11.75, 1, -13.25, -14.5, 1, -10.25, -17.25, 1, -4, -7.5, 1, 2, -1.5, 1, 2, -16.25, 1, 6.5, -7.75, 1, 5.75, -17.5, 1, 2.5, 17.25, 1, -4, 14.5, 1, -10.25, 10.25, 1, -14.5, 7, 1, 16.25, 11.75, 1, 13.25, 4, 1, -17.25, -2.5, 1, -17.5, 15.25, 1, 9, 17.5, 1, 2.5, 1.75, 4.75, -4.25, 2.75, 4.75, -4, 4, 4.75, -4.5, 2.5, 4.75, -10.5, 0.5, 4.75, -10, 2.75, 6.25, 0, 2.75, 6.25, 2.25, 7, 6.25, 2.25, 7, 6.25, 0, -6.75, 3.25, 3, -6.75, 3.25, 5.25, -2.5, 3.25, 5, -2.5, 3.25, 2.75, -14.5, 1, 10.25)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(8, 10, 9), PackedInt32Array(11, 13, 12), PackedInt32Array(14, 3, 15), PackedInt32Array(15, 3, 4), PackedInt32Array(16, 7, 17), PackedInt32Array(17, 7, 8), PackedInt32Array(19, 18, 20), PackedInt32Array(20, 18, 10), PackedInt32Array(20, 10, 11), PackedInt32Array(11, 10, 8), PackedInt32Array(22, 21, 23), PackedInt32Array(23, 21, 13), PackedInt32Array(23, 13, 0), PackedInt32Array(0, 13, 11), PackedInt32Array(7, 4, 8), PackedInt32Array(8, 4, 3), PackedInt32Array(8, 3, 0), PackedInt32Array(8, 0, 11), PackedInt32Array(25, 24, 26), PackedInt32Array(26, 24, 27), PackedInt32Array(27, 24, 29), PackedInt32Array(27, 29, 28), PackedInt32Array(31, 30, 32), PackedInt32Array(32, 30, 33), PackedInt32Array(33, 30, 34), PackedInt32Array(34, 30, 35), PackedInt32Array(38, 33, 36), PackedInt32Array(36, 33, 34), PackedInt32Array(36, 34, 37), PackedInt32Array(41, 40, 39), PackedInt32Array(42, 27, 43), PackedInt32Array(43, 27, 28), PackedInt32Array(43, 28, 35), PackedInt32Array(44, 41, 45), PackedInt32Array(46, 43, 47), PackedInt32Array(47, 43, 39), PackedInt32Array(45, 41, 30), PackedInt32Array(30, 41, 35), PackedInt32Array(35, 41, 39), PackedInt32Array(35, 39, 43), PackedInt32Array(49, 48, 50), PackedInt32Array(50, 48, 52), PackedInt32Array(50, 52, 51), PackedInt32Array(56, 55, 53), PackedInt32Array(53, 55, 54), PackedInt32Array(60, 59, 57), PackedInt32Array(57, 59, 58), PackedInt32Array(29, 24, 37), PackedInt32Array(37, 24, 61), PackedInt32Array(37, 61, 36)]
+agent_max_climb = 1.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_floor_art"]
+albedo_color = Color(0.88, 0.88, 0.95, 1)
+albedo_texture = ExtResource("10_artstone")
+uv1_scale = Vector3(0.16, 0.16, 0.16)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xa11k"]
+albedo_color = Color(0.54, 0.55, 0.62, 1)
+albedo_texture = ExtResource("9_rock")
+roughness = 0.92
+uv1_scale = Vector3(4.8, 4.8, 4.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xa11k"]
+size = Vector3(200, 2, 200)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fx001"]
+shader = ExtResource("6_fx001")
+shader_parameter/posterize_levels = 9.0
+shader_parameter/outline_strength = 0.27
+shader_parameter/grain_strength = 0.028
+shader_parameter/vignette_strength = 0.22
+shader_parameter/paper_tint = Color(0.96, 0.93, 0.86, 1)
+shader_parameter/shadow_tint = Color(0.42, 0.28, 0.55, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pillar"]
+material = SubResource("StandardMaterial3D_xa11k")
+size = Vector3(2, 16, 2)
+
+[sub_resource type="SphereMesh" id="SphereMesh_rock"]
+material = SubResource("StandardMaterial3D_xa11k")
+
+[node name="Arena" type="Node3D" unique_id=1898853117]
+script = ExtResource("1_7ft05")
+
+[node name="PauseMenu" parent="." unique_id=169605410 instance=ExtResource("4_xdvfk")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1606974995]
+environment = SubResource("Environment_xa11k")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=344474326]
+transform = Transform3D(0.8660254, -0.38302222, 0.32139382, 0, 0.64278764, 0.76604444, -0.5, -0.66341394, 0.5566704, 0, 0, 0)
+light_color = Color(0.9882353, 0.91764706, 0.73333335, 1)
+shadow_enabled = true
+
+[node name="RimLight" type="DirectionalLight3D" parent="." unique_id=344474327]
+transform = Transform3D(-0.8660254, 0.38302222, -0.32139382, 0, 0.64278764, 0.76604444, 0.5, -0.66341394, 0.5566704, 0, 0, 0)
+light_color = Color(0.55, 0.7, 1, 1)
+light_energy = 0.69
+
+[node name="Palette" type="Node" parent="." unique_id=990011223]
+script = ExtResource("7_pal")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=915911836]
+navigation_mesh = SubResource("NavigationMesh_wl4x5")
+
+[node name="SueloCentral" type="CSGCylinder3D" parent="NavigationRegion3D" unique_id=2093864878]
+use_collision = true
+radius = 30.0
+height = 1.0
+sides = 32
+material = SubResource("StandardMaterial3D_floor_art")
+
+[node name="MurosLimites" type="CSGCylinder3D" parent="NavigationRegion3D" unique_id=206026599]
+visible = false
+operation = 2
+radius = 30.5
+height = 20.0
+sides = 32
+
+[node name="PlataformasElevadas" type="Node3D" parent="NavigationRegion3D" unique_id=961139944]
+
+[node name="Plataforma1" type="CSGBox3D" parent="NavigationRegion3D/PlataformasElevadas" unique_id=913460750]
+transform = Transform3D(0.9987816, -0.0058482587, 0.049002662, 0.006489103, 0.99989533, -0.012928948, -0.04892192, 0.013231175, 0.9987151, -4.611, 2.5, 3.978)
+use_collision = true
+size = Vector3(5, 0.6, 3)
+material = SubResource("StandardMaterial3D_xa11k")
+
+[node name="Plataforma2" type="CSGBox3D" parent="NavigationRegion3D/PlataformasElevadas" unique_id=794194524]
+transform = Transform3D(-0.26100042, 0, 0.96533877, -0.00015462632, 1, -4.1806605e-05, -0.96533877, -0.0001601783, -0.26100042, 2.249, 4, -7.198)
+use_collision = true
+size = Vector3(7.0058594, 0.6, 3)
+material = SubResource("StandardMaterial3D_xa11k")
+
+[node name="Plataforma3" type="CSGBox3D" parent="NavigationRegion3D/PlataformasElevadas" unique_id=1020643723]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.816, 5.5, 1.12)
+use_collision = true
+size = Vector3(5, 0.6, 3)
+material = SubResource("StandardMaterial3D_xa11k")
+
+[node name="Player" parent="." unique_id=168701293 instance=ExtResource("2_wl4x5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 20)
+
+[node name="Killzone" type="Area3D" parent="." unique_id=1407891900]
+script = ExtResource("3_olpmc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Killzone" unique_id=773427503]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15, 0)
+shape = SubResource("BoxShape3D_xa11k")
+
+[node name="Pos1" type="Marker3D" parent="." unique_id=1802191242]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 12.7, 11)
+
+[node name="Pos2" type="Marker3D" parent="." unique_id=243901526]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 12.7, -11)
+
+[node name="Pos3" type="Marker3D" parent="." unique_id=66811295]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 12.7, 13)
+
+[node name="DummyEnemy" parent="." unique_id=247717540 instance=ExtResource("5_7ft05")]
+transform = Transform3D(-0.9733871, 0, -0.22916694, 0, 1, 0, 0.22916694, 0, -0.9733871, -14, 6.6704893, -14)
+
+[node name="PainterlyFX" type="CanvasLayer" parent="." unique_id=1264008546]
+layer = -1
+
+[node name="Overlay" type="ColorRect" parent="PainterlyFX" unique_id=1868548883]
+material = SubResource("ShaderMaterial_fx001")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SkyDecor" type="Node3D" parent="." unique_id=1101039942]
+visible = false
+
+[node name="Pillar1" type="MeshInstance3D" parent="SkyDecor" unique_id=117661742]
+transform = Transform3D(1.3, 0, 0, 0, 1.7, 0, 0, 0, 1.3, -38, 16, -13)
+mesh = SubResource("BoxMesh_pillar")
+
+[node name="Pillar2" type="MeshInstance3D" parent="SkyDecor" unique_id=1938455802]
+transform = Transform3D(1.1, 0, 0, 0, 2.3, 0, 0, 0, 1.1, 35, 22, 19)
+mesh = SubResource("BoxMesh_pillar")
+
+[node name="Pillar3" type="MeshInstance3D" parent="SkyDecor" unique_id=211932080]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 13, 28, -42)
+mesh = SubResource("BoxMesh_pillar")
+
+[node name="Pillar4" type="MeshInstance3D" parent="SkyDecor" unique_id=1804331876]
+transform = Transform3D(1.1, 0, 0, 0, 1.9, 0, 0, 0, 1.1, -29, 24, 29)
+mesh = SubResource("BoxMesh_pillar")
+
+[node name="Pillar5" type="MeshInstance3D" parent="SkyDecor" unique_id=1464250224]
+transform = Transform3D(1.2, 0, 0, 0, 1.6, 0, 0, 0, 1.2, 48, 13, -32)
+mesh = SubResource("BoxMesh_pillar")
+
+[node name="Pillar6" type="MeshInstance3D" parent="SkyDecor" unique_id=458549082]
+transform = Transform3D(1.4, 0, 0, 0, 2.1, 0, 0, 0, 1.4, -48, 19, 11)
+mesh = SubResource("BoxMesh_pillar")
+
+[node name="Pillar7" type="MeshInstance3D" parent="SkyDecor" unique_id=930601828]
+transform = Transform3D(1.6, 0, 0, 0, 1.4, 0, 0, 0, 1.6, 2, 34, 44)
+mesh = SubResource("BoxMesh_pillar")
+
+[node name="Pillar8" type="MeshInstance3D" parent="SkyDecor" unique_id=610297939]
+transform = Transform3D(1.1, 0, 0, 0, 1.8, 0, 0, 0, 1.1, 24, 17, -48)
+mesh = SubResource("BoxMesh_pillar")
+
+[node name="Rock1" type="MeshInstance3D" parent="SkyDecor" unique_id=1395082188]
+transform = Transform3D(3.2, 0, 0, 0, 1.6, 0, 0, 0, 3.2, 26, 0, 9)
+mesh = SubResource("SphereMesh_rock")
+
+[node name="Rock2" type="MeshInstance3D" parent="SkyDecor" unique_id=1945479352]
+transform = Transform3D(2.6, 0, 0, 0, 2.2, 0, 0, 0, 2.6, -24, 0.4, 15)
+mesh = SubResource("SphereMesh_rock")
+
+[node name="Rock3" type="MeshInstance3D" parent="SkyDecor" unique_id=2115959201]
+transform = Transform3D(4, 0, 0, 0, 2.4, 0, 0, 0, 4, 11, 0.5, -26)
+mesh = SubResource("SphereMesh_rock")
+
+[node name="Rock4" type="MeshInstance3D" parent="SkyDecor" unique_id=1121961650]
+transform = Transform3D(3, 0, 0, 0, 1.8, 0, 0, 0, 3, -22, 0.3, -20)
+mesh = SubResource("SphereMesh_rock")
+
+[node name="FarRuin1" type="MeshInstance3D" parent="SkyDecor" unique_id=1416233921]
+transform = Transform3D(0.742662, 0.30699486, 0, -0.10465734, 2.1784754, 0, 0, 0, 0.85, -42, 13, -33)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_pillar")
+
+[node name="FarRuin2" type="MeshInstance3D" parent="SkyDecor" unique_id=410182485]
+transform = Transform3D(0.7436714, -0.375939, 0, 0.09722561, 2.8755295, 0, 0, 0, 0.85, 42, 18, -28)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_pillar")
+
+[node name="FarRuin3" type="MeshInstance3D" parent="SkyDecor" unique_id=1008824166]
+transform = Transform3D(0.7319231, 0.37099037, 0, -0.16367221, 1.6590257, 0, 0, 0, 0.85, -49, 10, 17)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_pillar")
+
+[node name="FarRuin4" type="MeshInstance3D" parent="SkyDecor" unique_id=1086801647]
+transform = Transform3D(0.7365032, -0.50991905, 0, 0.14164418, 2.6514115, 0, 0, 0, 0.85, 48, 17, 40)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_pillar")
+
+[node name="FarRuin5" type="MeshInstance3D" parent="SkyDecor" unique_id=378472668]
+transform = Transform3D(0.7476013, -0.23974407, 0, 0.059936017, 2.990405, 0, 0, 0, 0.85, -26, 20, -54)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_pillar")
+
+[node name="FarRuin6" type="MeshInstance3D" parent="SkyDecor" unique_id=224757276]
+transform = Transform3D(0.7365032, 0.3777178, 0, -0.14164418, 1.9640085, 0, 0, 0, 0.85, 24, 14, 54)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_pillar")
+
+[node name="ArenaV4Visuals" type="Node3D" parent="." unique_id=1021110741]
+script = ExtResource("8_arv4")
+
+[node name="RuinasArtisticasV1" type="Node3D" parent="." unique_id=671873511]
+script = ExtResource("11_ruinas")
+
+[node name="AtmosferaArena" type="Node3D" parent="." unique_id=842885329]
+script = ExtResource("12_atmo")

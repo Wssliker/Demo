@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AttackData" format=3 uid="uid://cj2txcueg00s"]
+
+[ext_resource type="Script" uid="uid://dgyxpgbrq83s7" path="res://AttackData.gd" id="1_o0aav"]
+
+[resource]
+script = ExtResource("1_o0aav")
+id = "Melee"
+damage = 15
+charge_time = 0.5
+recover_time = 0.8
+telegraph_color = Color(1, 0.41960785, 0.41960785, 1)
+metadata/_custom_type_script = "uid://dgyxpgbrq83s7"
